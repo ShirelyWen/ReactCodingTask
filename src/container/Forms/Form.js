@@ -35,7 +35,7 @@ function ContactData(props) {
       valid: false,
       touched: false
     },
-    phoneNumber: {
+    phone: {
       elementType: "input",
       elementConfig: {
         type: "tel",
@@ -103,7 +103,7 @@ function ContactData(props) {
           { value: "WA", displayValue: "WA" }
         ]
       },
-      value: "",
+      value: "NSW",
       validation: {},
       valid: true
     },
@@ -116,7 +116,7 @@ function ContactData(props) {
       validation: {
         required: true
       },
-      valid: false,
+      valid: true,
       touched: false
     }
   });
@@ -139,11 +139,10 @@ function ContactData(props) {
     let formIsValid = true;
     for (let inputIdentifier in updatedRecord) {
       formIsValid = updatedRecord[inputIdentifier].valid && formIsValid;
-      // console.log("4 is " + formIsValid);
+      console.log("4 is " + formIsValid);
     }
     // console.log("1 is" + updatedRecord[inputIdentifier].valid);
     // console.log("2 is" + formIsValid);
-    console.log(updatedRecord[inputIdentifier].valid);
     setRecord(updatedRecord);
     setFormIsValid(formIsValid);
   };

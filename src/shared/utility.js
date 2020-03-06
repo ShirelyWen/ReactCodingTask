@@ -30,6 +30,11 @@ export const checkValidity = (value, rules) => {
     isValid = pattern.test(value) && isValid;
   }
 
+  if (rules.isDOB) {
+    const pattern = /^\d{2}([./-])\d{2}\1\d{4}$/;
+    isValid = pattern.test(value) && isValid;
+  }
+
   if (rules.isStreet) {
     const pattern = /^[a-zA-Z0-9\s,'-,'/]*$/;
     isValid = pattern.test(value) && isValid;

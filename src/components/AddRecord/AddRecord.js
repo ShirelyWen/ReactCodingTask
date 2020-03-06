@@ -58,7 +58,8 @@ function RecordData(props) {
       },
       value: "",
       validation: {
-        required: true
+        required: true,
+        isDOB: true
       },
       valid: false,
       touched: false

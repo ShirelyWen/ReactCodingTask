@@ -1,13 +1,13 @@
 import React from "react";
 import Record from "./Record/Record";
-import RecordData from "../AddRecord/AddRecord";
+import RecordData from "../../components/AddRecord/AddRecord";
 import Filter from "../../components/RecordFilter/RecordFilter";
 
 import { connect } from "react-redux";
 import * as actionTypes from "../../store/action";
 import classes from "./Records.module.css";
 
-function Records(props) {
+export function Records(props) {
   // console.log(props.rcs);
   return (
     <div className={classes.Records}>

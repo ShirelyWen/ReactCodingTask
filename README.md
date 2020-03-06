@@ -4,7 +4,9 @@
 
 First download the Project and you can run 
 
-`npm install` or `yarn install` in vscode ternimal or local terminal 
+### `npm install` or `yarn install` 
+
+in vscode ternimal or local terminal 
 
 to automaitically install the node modules
 

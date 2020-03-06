@@ -2,7 +2,7 @@ import React from "react";
 
 import classes from "./Input.module.css";
 
-const input = props => {
+function Input(props) {
   let inputElement = null;
   let validationError = null;
   const inputClasses = [classes.InputElement];
@@ -60,6 +60,6 @@ const input = props => {
       {validationError}
     </div>
   );
-};
+}
 
-export default input;
+export default Input;

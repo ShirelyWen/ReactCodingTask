@@ -1,0 +1,10 @@
+.Records {
+  display: flex;
+}
+
+.col {
+  width: 33%;
+  margin: 5px 5px;
+  padding: 10px 10px;
+  text-align: center;
+}

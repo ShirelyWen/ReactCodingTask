@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 
-import classes from "./Form.module.css";
+import classes from "./AddRecord.module.css";
 import Input from "../../components/UI/Input/Input";
 import Button from "../../components/UI/Button/Button";
 import { updateObject, checkValidity } from "../../shared/utility";
+import * as actionTypes from "../../store/action";
 
-function ContactData(props) {
+function RecordData(props) {
   const [record, setRecord] = useState({
     name: {
       elementType: "input",
@@ -123,6 +125,21 @@ function ContactData(props) {
 
   const [formIsValid, setFormIsValid] = useState(false);
 
+  const addHandler = event => {
+    event.preventDefault();
+
+    props.onAddedRecord(
+      record.name.value,
+      record.email.value,
+      record.phone.value,
+      record.DOB.value,
+      record.street.value,
+      record.city.value,
+      record.state.value,
+      record.country.value
+    );
+  };
+
   const inputChangedHandler = (event, inputIdentifier) => {
     const updatedRecordElement = updateObject(record[inputIdentifier], {
       value: event.target.value,
@@ -139,10 +156,8 @@ function ContactData(props) {
     let formIsValid = true;
     for (let inputIdentifier in updatedRecord) {
       formIsValid = updatedRecord[inputIdentifier].valid && formIsValid;
-      console.log("4 is " + formIsValid);
+      // console.log(formIsValid);
     }
-    // console.log("1 is" + updatedRecord[inputIdentifier].valid);
-    // console.log("2 is" + formIsValid);
     setRecord(updatedRecord);
     setFormIsValid(formIsValid);
   };
@@ -154,10 +169,10 @@ function ContactData(props) {
       config: record[key]
     });
   }
-  // console.log(recordArray);
-  // console.log("3 is" + formIsValid);
+  // console.log(recordArray[3].config.value);
+  // console.log(record.name.value);
   let form = (
-    <form>
+    <form onSubmit={addHandler}>
       {recordArray.map(record => (
         <Input
           key={record.id}
@@ -177,11 +192,38 @@ function ContactData(props) {
     </form>
   );
   return (
-    <div className={classes.ContactData}>
+    <div className={classes.RecordData}>
       <h4>Enter your Record Infromation</h4>
       {form}
     </div>
   );
 }
 
-export default ContactData;
+const mapStateToProps = state => {
+  return {
+    rcs: state.recordsBuilder.records
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddedRecord: (name, email, phone, DOB, street, city, state, country) =>
+      dispatch({
+        type: actionTypes.ADD_RECORD,
+        formData: {
+          name: name,
+          email: email,
+          phone: phone,
+          DOB: DOB,
+          street: street,
+          city: city,
+          state: state,
+          country: country
+        }
+      }),
+    onRemovedRecord: id =>
+      dispatch({ type: actionTypes.REMOVE_RECORD, recordId: id })
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecordData);

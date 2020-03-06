@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Input from "../../components/UI/Input/Input";
-import Button from "../../components/UI/Button/Button";
+import Input from "../UI/Input/Input";
+import Button from "../UI/Button/Button";
 
 import { connect } from "react-redux";
 import * as actionTypes from "../../store/action";

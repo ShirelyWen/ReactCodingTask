@@ -1,7 +1,7 @@
 import React from "react";
 import Record from "./Record/Record";
 import RecordData from "../AddRecord/AddRecord";
-import Filter from "../RecordFilter/RecordFilter";
+import Filter from "../../components/RecordFilter/RecordFilter";
 
 import { connect } from "react-redux";
 import * as actionTypes from "../../store/action";

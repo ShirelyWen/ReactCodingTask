@@ -16,7 +16,7 @@ export const checkValidity = (value, rules) => {
   }
 
   if (rules.isName) {
-    const pattern = /^[A-Za-z]+$/;
+    const pattern = /^[a-zA-Z ]{2,30}$/;
     isValid = pattern.test(value) && isValid;
   }
 

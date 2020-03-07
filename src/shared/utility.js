@@ -31,7 +31,7 @@ export const checkValidity = (value, rules) => {
   }
 
   if (rules.isDOB) {
-    const pattern = /^\d{2}([./-])\d{2}\1\d{4}$/;
+    const pattern = /^\d{4}([./-])\d{2}\1\d{2}$/;
     isValid = pattern.test(value) && isValid;
   }
 
